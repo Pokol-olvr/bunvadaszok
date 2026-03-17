@@ -9,10 +9,12 @@ youtube = googleapiclient.discovery.build(
     api_service_name, api_version, developerKey = DEVELOPER_KEY)
 
 request = youtube.search().list(
-    part="id",
+    part="id, snippet",
     type="video",
-    q="Bűnvadászok",
-    maxResults=1
+    order="date",
+    channelId="UCdPhEv5wiw2uK6J0_wkc-RA",
+    maxResults=1,
+    fields="items(id(videoId),snippet(publishedAt,channelId,channelTitle,title,description))"
 )
 
 response = request.execute()
