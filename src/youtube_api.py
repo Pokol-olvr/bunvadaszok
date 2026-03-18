@@ -2,7 +2,7 @@ import googleapiclient.discovery
 from googleapiclient.errors import HttpError
 
 
-import_file = r"C:\pityon100\valami\src\key.txt"
+import_file = r"C:\pityon100\valami\src\google_api.txt"
 with open(import_file,"r") as api_key:
     secret = api_key.read()
     print(secret)
