@@ -5,7 +5,6 @@ from googleapiclient.errors import HttpError
 import_file = r"C:\pityon100\valami\src\google_api.txt"
 with open(import_file,"r") as api_key:
     secret = api_key.read()
-    print(secret)
 
 api_service_name = "youtube"
 api_version = "v3"
@@ -31,4 +30,3 @@ def request1():
     except HttpError as e:
         print(f"Nem sikerült a hívás: {e}")
 
-request1()
