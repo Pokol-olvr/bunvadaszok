@@ -30,3 +30,5 @@ def request1():
     except HttpError as e:
         print(f"Nem sikerült a hívás: {e}")
 
+print(request1())
+
