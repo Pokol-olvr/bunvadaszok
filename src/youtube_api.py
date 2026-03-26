@@ -1,20 +1,12 @@
+import os 
 import googleapiclient.discovery
 from googleapiclient.errors import HttpError
 
-def file_olvaso():
-    try:
-        import_file = r"/src/google_api.txt"
-        with open(import_file,"r") as api_key:
-            secret = api_key.read()
-            return secret
-    except FileExistsError as e:
-        print(f"Nem létezik megnyitni kívánt file: {e}")
-    except FileNotFoundError as e:
-        print(f"Nem található meg a megnyitni kívánt file: {e}")
+secret = os.environ.get("YOUTUBE_API_KEY")
 
 api_service_name = "youtube"
 api_version = "v3"
-DEVELOPER_KEY = file_olvaso()
+DEVELOPER_KEY = secret
 
 youtube = googleapiclient.discovery.build(
     api_service_name, api_version, developerKey = DEVELOPER_KEY)

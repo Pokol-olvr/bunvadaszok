@@ -1,15 +1,7 @@
+import os
 import requests
 
-def file_olvaso():
-    try:
-        import_file = r"/src/slack_token.txt"
-        with open(import_file,"r") as file:
-            webhook_url = file.read()
-        return webhook_url    
-    except FileExistsError as e:
-        print(f"Nem létezik megnyitni kívánt file: {e}")
-    except FileNotFoundError as e:
-        print(f"Nem található meg a megnyitni kívánt file: {e}")
+webhook_url = os.environ.get("SLACK_WEBHOOK")
 
 def post_uzenet(adat): 
     print("Üzenet küldése...")
