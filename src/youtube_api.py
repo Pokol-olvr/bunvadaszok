@@ -1,10 +1,14 @@
 import googleapiclient.discovery
 from googleapiclient.errors import HttpError
 
-
-import_file = r"/home/runner/work/bunvadaszok/bunvadaszok/src/google_api.txt"
-with open(import_file,"r") as api_key:
-    secret = api_key.read()
+try:
+    import_file = r"/home/runner/work/bunvadaszok/bunvadaszok/src/google_api.txt"
+    with open(import_file,"r") as api_key:
+        secret = api_key.read()
+except FileExistsError as e:
+    print(f"Nem létezik megnyitni kívánt file: {e}")
+except FileNotFoundError as e:
+    print(f"Nem található meg a megnyitni kívánt file: {e}")
 
 api_service_name = "youtube"
 api_version = "v3"

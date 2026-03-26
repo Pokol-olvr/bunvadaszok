@@ -1,5 +1,15 @@
 import requests
 
+try:
+    import_file = r"/home/runner/work/bunvadaszok/bunvadaszok/src/slack_token.txt"
+    with open(import_file,"r") as file:
+        webhook_url = file.read()    
+    print("Üzenet küldése...")
+except FileExistsError as e:
+    print(f"Nem létezik megnyitni kívánt file: {e}")
+except FileNotFoundError as e:
+    print(f"Nem található meg a megnyitni kívánt file: {e}")
+
 def post_uzenet(adat): 
     payload = {
         'text':adat
@@ -7,11 +17,6 @@ def post_uzenet(adat):
     headers = {'Content-Type': 'application/json'}
 
     try:
-        import_file = r"/home/runner/work/bunvadaszok/bunvadaszok/src/slack_token.txt"
-        with open(import_file,"r") as file:
-            webhook_url = file.read()    
-        print("Üzenet küldése...")
-
         response = requests.post(
             webhook_url,
             json=payload,
