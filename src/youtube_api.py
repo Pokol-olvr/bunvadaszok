@@ -2,8 +2,11 @@ import os
 import googleapiclient.discovery
 from googleapiclient.errors import HttpError
 
-secret = os.environ.get("YOUTUBE_API_KEY")
-
+try:
+    secret = os.environ.get("YOUTUBE_API_KEY")
+except OSError as e:
+    print(f"Nem találom a kulcsot: {e}")
+    
 api_service_name = "youtube"
 api_version = "v3"
 DEVELOPER_KEY = secret

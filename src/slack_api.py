@@ -1,8 +1,11 @@
 import os
 import requests
 
-webhook_url = os.environ.get("SLACK_WEBHOOK")
-
+try:
+    webhook_url = os.environ.get("SLACK_WEBHOOK")
+except OSError as e:
+    print(f"Nem találom a kulcsot: {e}")
+    
 def post_uzenet(adat): 
     print("Üzenet küldése...")
 
