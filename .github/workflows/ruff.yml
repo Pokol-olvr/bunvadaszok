@@ -20,6 +20,7 @@ jobs:
       uses: actions/checkout@v4
       with:         
         token: ${{ secrets.LOGGER_PAT }}
+        ref: ${{ github.head_ref }}
     
     - name: Set up Python
       uses: actions/setup-python@v5
