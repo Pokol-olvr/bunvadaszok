@@ -30,7 +30,9 @@ jobs:
       run: ruff check /home/runner/work/bunvadaszok/bunvadaszok/src/
     
     - name: Ruf Fix
+      if: always()
       run: ruff check . --fix ruff check /home/runner/work/bunvadaszok/bunvadaszok/src/
 
     - name: ReRun Ruff
+      if: always()
       run: ruff check /home/runner/work/bunvadaszok/bunvadaszok/src/
