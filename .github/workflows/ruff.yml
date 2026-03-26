@@ -11,7 +11,11 @@ on:
 
 jobs: 
   lint:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest    
+    timeout-minutes: 2
+    permissions:
+      contents: write
+      pull-requests: write 
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
@@ -27,12 +31,25 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Ruff
+      id: first_check
+      continue-on-error: true
       run: ruff check /home/runner/work/bunvadaszok/bunvadaszok/src/
     
     - name: Ruf Fix
-      if: always()
+      if: steps.first_check.outcome == 'failure'
       run: ruff check . --fix /home/runner/work/bunvadaszok/bunvadaszok/src/
 
     - name: ReRun Ruff
-      if: always()
+      if: steps.first_check.outcome == 'failure'
       run: ruff check /home/runner/work/bunvadaszok/bunvadaszok/src/
+
+    - name: Új branch és Pull Request létrehozása
+      if: steps.first_check.outcome == 'failure'
+      uses: peter-evans/create-pull-request@v6
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "style: ruff auto-fix alkalmazása"
+        branch: auto-fix/ruff-${{ github.run_id }}
+        title: "🤖 Automatikus Ruff javítások"
+        body: "Automatikus javítások alkalmazva."
+        base: ${{ github.ref_name }}
