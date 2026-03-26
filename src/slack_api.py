@@ -7,7 +7,7 @@ def post_uzenet(adat):
     headers = {'Content-Type': 'application/json'}
 
     try:
-        import_file = r"C:\pityon100\valami\src\slack_token.txt"
+        import_file = r"/home/runner/work/bunvadaszok/bunvadaszok/src/slack_token.txt"
         with open(import_file,"r") as file:
             webhook_url = file.read()    
         print("Üzenet küldése...")
