@@ -13,13 +13,13 @@ jobs:
   lint:
     runs-on: ubuntu-latest    
     timeout-minutes: 2
-    permissions:
-      contents: write
-      pull-requests: write 
+    
 
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
+      with:         
+        token: ${{ secrets.ADMIN_PAT }}
     
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -48,7 +48,6 @@ jobs:
       if: steps.first_check.outcome == 'failure'
       uses: peter-evans/create-pull-request@v6
       with:
-        token: ${{ secrets.ADMIN_PAT }}
         commit-message: "style: ruff auto-fix alkalmazása"
         branch: auto-fix/ruff-${{ github.run_id }}
         title: "🤖 Automatikus Ruff javítások"
