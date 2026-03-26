@@ -25,7 +25,7 @@ def request1():
             maxResults=1,
             fields="items(id(videoId),snippet(publishedAt,channelId,channelTitle,title,description))"
         )
-        print(f"A hívás sikeres volt!")
+        print("A hívás sikeres volt!")
         response = request.execute()
         return response
     except HttpError as e:
