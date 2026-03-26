@@ -5,11 +5,10 @@ try:
     webhook_url = os.environ.get("SLACK_WEBHOOK")
 except OSError as e:
     print(f"Nem találom a kulcsot: {e}")
-    
+
 def post_uzenet(adat): 
     print("Üzenet küldése...")
 
-    webhook_url = file_olvaso()
     payload = {
         'text':adat
     }
