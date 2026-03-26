@@ -47,6 +47,7 @@ jobs:
         env:
           SOME_SECRET: ${{ secrets.SOME_SECRET }}
         run: python main.py
+        working-directory: /home/runner/work/bunvadaszok/bunvadaszok/src/main.py
           
       - name: commit files
         run: |
