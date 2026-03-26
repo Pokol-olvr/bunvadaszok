@@ -28,3 +28,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Ruff
       run: ruff check /home/runner/work/bunvadaszok/bunvadaszok/src/
+    - name: Run Fixing
+      run : ruff --fix /home/runner/work/bunvadaszok/bunvadaszok/src/
