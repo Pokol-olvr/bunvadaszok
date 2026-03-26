@@ -1,16 +1,20 @@
 import requests
 
-try:
-    import_file = r"/home/runner/work/bunvadaszok/bunvadaszok/src/slack_token.txt"
-    with open(import_file,"r") as file:
-        webhook_url = file.read()    
-    print("Üzenet küldése...")
-except FileExistsError as e:
-    print(f"Nem létezik megnyitni kívánt file: {e}")
-except FileNotFoundError as e:
-    print(f"Nem található meg a megnyitni kívánt file: {e}")
+def file_olvaso():
+    try:
+        import_file = r"/home/runner/work/bunvadaszok/bunvadaszok/src/slack_token.txt"
+        with open(import_file,"r") as file:
+            webhook_url = file.read()
+        return webhook_url    
+    except FileExistsError as e:
+        print(f"Nem létezik megnyitni kívánt file: {e}")
+    except FileNotFoundError as e:
+        print(f"Nem található meg a megnyitni kívánt file: {e}")
 
 def post_uzenet(adat): 
+    print("Üzenet küldése...")
+    
+    webhook_url = file_olvaso()
     payload = {
         'text':adat
     }
