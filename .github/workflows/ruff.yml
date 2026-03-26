@@ -29,4 +29,4 @@ jobs:
     - name: Run/Fix Ruff
       run: |
         ruff check /home/runner/work/bunvadaszok/bunvadaszok/src/
-        ruff --fix /home/runner/work/bunvadaszok/bunvadaszok/src/
+        ruff check --fix /home/runner/work/bunvadaszok/bunvadaszok/src/
