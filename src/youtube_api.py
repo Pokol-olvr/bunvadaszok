@@ -3,7 +3,7 @@ from googleapiclient.errors import HttpError
 
 def file_olvaso():
     try:
-        import_file = r"/home/runner/work/bunvadaszok/bunvadaszok/src/google_api.txt"
+        import_file = r"/src/google_api.txt"
         with open(import_file,"r") as api_key:
             secret = api_key.read()
             return secret
