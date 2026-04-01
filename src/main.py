@@ -34,7 +34,7 @@ if __name__ == "__main__":
     aktualis_json = request1()
 
     tarolt_ido = date_parse(tarolt_json)
-    aktualis_ido = date_parse(request1)
+    aktualis_ido = date_parse(request1())
 
     if osszehasonlito(tarolt_ido, aktualis_ido):
         json_atiro(aktualis_json)
