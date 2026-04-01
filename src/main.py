@@ -4,6 +4,8 @@ import os
 
 from slack_api import post_uzenet
 from json_to_text import normalizator
+from youtube_api import request1
+from comparator import osszehasonlito, json_olvaso, json_atiro, date_parse
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -28,7 +30,20 @@ except KeyError:
 if __name__ == "__main__":
     logger.info(f"Token value: {SOME_SECRET}")
 
+    tarolt_json = json_olvaso()
+    aktualis_json = request1()
+
+    tarolt_ido = date_parse(tarolt_json)
+    aktualis_ido = date_parse(request1)
+
+    if osszehasonlito(tarolt_ido, aktualis_ido):
+        json_atiro(aktualis_json)
+        uzenet = json_olvaso()
+    else:
+        uzenet = "Nincs sajnos új videó :("
+        
     uzenet = normalizator()
+    
     post_uzenet(uzenet)
 
 
