@@ -1,6 +1,9 @@
 import os 
 import googleapiclient.discovery
 from googleapiclient.errors import HttpError
+from dotenv import load_dotenv
+
+load_dotenv()
 
 try:
     secret = os.environ.get("YOUTUBE_API_KEY")
@@ -25,10 +28,12 @@ def request1():
             maxResults=1,
             fields="items(id(videoId),snippet(publishedAt,channelId,channelTitle,title,description))"
         )
-        print("A hívás sikeres volt!")
         response = request.execute()
+        print("A hívás sikeres volt!")
         return response
     except HttpError as e:
         print(f"Nem sikerült a hívás: {e}")
 
+uzenet = request1()
 
+print(uzenet)
