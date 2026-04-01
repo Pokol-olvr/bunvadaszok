@@ -38,11 +38,10 @@ if __name__ == "__main__":
 
     if osszehasonlito(tarolt_ido, aktualis_ido):
         json_atiro(aktualis_json)
-        uzenet = json_olvaso()
+        uzenet = normalizator(json_olvaso())
     else:
         uzenet = "Nincs sajnos új videó :("
         
-    uzenet = normalizator()
     
     post_uzenet(uzenet)
 
