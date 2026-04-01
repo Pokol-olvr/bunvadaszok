@@ -1,10 +1,10 @@
 from dateutil import parser
 from pathlib import Path
 import json
-from youtube_api import request1
 
-json_utvonal = Path("src") / ("video.json")
-
+main = Path(__file__) 
+src = main.parent
+json_utvonal = src / "video.json"
 
 def json_olvaso():
     try:
